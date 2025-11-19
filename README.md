@@ -4,14 +4,14 @@ Ovvero, la prima esperienza di laboratorio per il corso "Sperimentazioni di fisi
 
 ## Che cosa c'è qui
 
- - Un notebook di Julia;
+ - Un notebook di [Jupyter](https://jupyter.org/) per il linguaggio [Julia](https://julialang.org/);
  - Una cartella `dati` con dentro i tre `.csv` contenenti le misure;
  - Una cartella `img` con dentro le immagini acquisite durante l'esperienza;
  - Una cartella `typst` con il sorgente [Typst](https://typst.app/) della relazione.
 
  ## Le immagini
 
- Alcune immagini seguono la denominazione `x_y_z_n.jpg` dove (nelle notazioni dell'appendice (che per ora non esiste)) `x` è il risultato `z` della procedura di determinazione dell'offset oggetto-guida, `y` è il valore segnato sulla guida dal lato sinistro della base sulla quale è montata la lente, `z` è il valore segnato sulla guida dal lato sinistro della base sulla quale è montata la camera ed `n` è un valore compreso tra `0001` e `0005` (vd. tabella).
+ Alcune immagini seguono la denominazione `x_y_z_n.jpg` dove (nelle notazioni dell'appendice (che per ora non esiste)) `x` è il risultato `z` della procedura di determinazione dell'offset oggetto-guida, `y` è il valore segnato sulla guida dal lato sinistro della base sulla quale è montata la lente, `z` è il valore segnato sulla guida dal lato sinistro della base sulla quale è montata la camera ed `n` è un valore compreso tra `0001` e `0005` per il quale vd. tabella.
 
  | n    | significato |
  |------|-------------|
@@ -25,5 +25,8 @@ Ovvero, la prima esperienza di laboratorio per il corso "Sperimentazioni di fisi
 
 ## Come si usa tutto ciò
 
-Il linguaggio scelto è [Julia](https://julialang.org/). Per visualizzare il notebook e interagire con esso ho utilizzato il pacchetto il pacchetto [IJulia](https://github.com/JuliaLang/IJulia.jl) e l'editor [VSCodium](https://vscodium.com/) con le estensioni per [Jupyter](https://jupyter.org/) e Julia.
+Come dicevo il linguaggio scelto è Julia. Per visualizzare il notebook e interagire con esso ho utilizzato il pacchetto [IJulia](https://github.com/JuliaLang/IJulia.jl) e l'editor [VSCodium](https://vscodium.com/) con le estensioni per Jupyter e Julia.
 
+## Che cosa manca da fare
+
+Al momento _tantissime_ cose. In particolare andrebbero [precompilati](https://julialang.github.io/PackageCompiler.jl/stable/) i pacchetti che uso.
