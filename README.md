@@ -11,7 +11,7 @@ Ovvero, la prima esperienza di laboratorio per il corso "Sperimentazioni di fisi
 
  ## Le immagini
 
- Alcune immagini seguono la denominazione `x_y_z_n.jpg` dove (nelle notazioni dell'appendice (che per ora non esiste)) `x` è il risultato `z` della procedura di determinazione dell'offset oggetto-guida, `y` è il valore segnato sulla guida dal lato sinistro della base sulla quale è montata la lente, `z` è il valore segnato sulla guida dal lato sinistro della base sulla quale è montata la camera ed `n` è un valore compreso tra `0001` e `0005` per il quale vd. tabella.
+ Alcune immagini seguono la denominazione `x_y_z_n.jpg` dove (nelle notazioni dell'appendice (che per ora non esiste)) `x` è il risultato della procedura di determinazione dell'offset oggetto-guida, `y` è il valore segnato sulla guida dal lato sinistro della base sulla quale è montata la lente, `z` è il valore segnato sulla guida dal lato sinistro della base sulla quale è montata la camera ed `n` è un valore compreso tra `0001` e `0005` per il quale vd. tabella.
 
  | n    | significato |
  |------|-------------|
