@@ -1,7 +1,6 @@
-// =========================================================================
-// Configurazione generale
-// =========================================================================
-
+// =====================================================
+// Configurazione del documento
+// =====================================================
 
 // Importo i pacchetti
 #import "@preview/ctheorems:1.1.3": *
@@ -26,12 +25,6 @@
 #let example = thmplain("example", "Example").with(numbering: none)
 #let proof = thmproof("proof", "Proof")
 
-
-// Setup della pagina
-#set page(paper: "a4")
-#set heading(numbering: "1.1")
-
-
 // Definizioni matematiche
 #show sym.colon: $class("punctuation", colon) space.thin$
 #let to = math.arrow
@@ -50,15 +43,64 @@
 #let lrangle(fst, snd) = $angle.l fst, snd angle.r$
 
 
-// =========================================================================
+// Setup della pagina
+// Cfr. https://typst.app/docs/tutorial/making-a-template/
+
+#set page(paper: "a4")
+#set heading(numbering: "1.1")
+#set text(font: "New Computer Modern")
+
+// Configurazione del titolo
+#set document(title: [Stima della distanza focale di una lente (non troppo) spessa e studio delle aberrazioni cromatiche])
+
+#show title: set align(center)
+#show title: set block(below: 1.2em)
+
+#title()
+
+#grid(
+  columns: (1fr, 1fr),
+
+  align(center)[
+    Marco Vianello\
+    #link("mailto:marco.vianello.14@studenti.unipd.it")\
+    matricola
+  ],
+
+  align(center)[
+    Nome Cognome\
+    #link("mailto:nome.cognome.numero@studenti.unipd.it")\
+    matricola
+  ]
+)
+
+#align(center)[
+  #set par(justify: false)
+  *Abstract*\
+  #lorem(80)
+]
+
+
+
+// =====================================================
 // Inizio del documento
-// =========================================================================
-#title[Titolo]
+// =====================================================
 
-= Prova
 
-Prova.
+= Introduzione
 
-$
-  nabla_X s = (sum_r cal(L)_X (s^r) + sum_mu sum_a Gamma_(mu a)^r X^mu s^a) e_r
-$
+Qui ci va la parte di ottica geometrica.
+
+= Descrizione dell'apparato e delle misure effettuate
+
+#lorem(30)
+
+#lorem(30)
+
+= Analisi dati
+
+#lorem(30)
+
+= Conclusioni
+
+#lorem(30)
