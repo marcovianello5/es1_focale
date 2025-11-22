@@ -56,39 +56,38 @@
     numbering: "1.1"
   )
 
-  place(
-    top + left,
+  //show title: set text(size: 17pt)
 
-    float: true,
+  place(top + center, float: true, scope: "parent", clearance: 3em)[
+    #grid(
+      columns: (1fr, 1fr),
+        
+      align(left)[
+        #text(size: 13pt)[Sperimentazioni di Fisica 2]
+      ],
 
-    scope: "parent",
-
-    clearance: 2em,
-
-    {
-      title()
-
-      let count = autori.len()
-      let colonne = calc.min(count, 3)
-
-      grid(
-        columns: (1fr,) * colonne,
-
-        row-gutter: 24pt,
-
-        ..autori.map(autore => [
-          #autore.nome \
-          #link("mailto:" + autore.email) \
-          #autore.matricola
-        ])
-      )
-
-      par(justify: false)[
-        *Abstract* \
-        #abstract
+      align(right)[
+        #text(size: 13pt)[Anno 2025-2026]
       ]
-    }
-  )
+    )
+
+    #title()
+
+    #let count = autori.len()
+    #let colonne = calc.min(count, 3)
+
+    #grid(
+      columns: (1fr,) * colonne,
+      row-gutter: 24pt,
+
+      ..autori.map(autore => [#autore.nome \ #link("mailto:" + autore.email) \ #autore.matricola])
+    )
+
+    #par(justify: false)[
+      *Abstract* \
+      #abstract
+    ]
+  ]
 
   documento
 }
