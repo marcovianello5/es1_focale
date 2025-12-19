@@ -56,7 +56,7 @@
     numbering: "1.1"
   )
 
-  //show title: set text(size: 17pt)
+  // show title: set text(size: 17pt)
 
   place(top + center, float: true, scope: "parent", clearance: 3em)[
     #grid(
