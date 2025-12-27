@@ -35,21 +35,28 @@
 #let ltensors(from, to, ..sink) = $tensor(lin, ..sink) (from; to)$
 #let vf = math.cal("X")
 #let cntsf(deg) = $cal(C)^deg$
-#let otimes = math.times.o
+// #let otimes = math.times.o
 #let lrangle(fst, snd) = $angle.l fst, snd angle.r$
 
 
 // Setup della pagina
 // Cfr. https://typst.app/docs/tutorial/making-a-template/
 
-#let configurazione(autori: (), abstract: [], documento) = {
+
+#let configurazione(titolo, autori: (), abstract: [], documento) = {
   
+  set par(
+    first-line-indent: 1em,
+    spacing: 0.65em,
+    justify: true,
+  )
+
   set page(
     paper: "a4"
   )
 
   set text(
-    //font: "New Computer Modern"
+    lang: "it"
   )
 
   set heading(
@@ -59,19 +66,8 @@
   // show title: set text(size: 17pt)
 
   place(top + center, float: true, scope: "parent", clearance: 3em)[
-    #grid(
-      columns: (1fr, 1fr),
-        
-      align(left)[
-        #text(size: 13pt)[Sperimentazioni di Fisica 2]
-      ],
-
-      align(right)[
-        #text(size: 13pt)[Anno 2025-2026]
-      ]
-    )
-
-    #title()
+    
+    #text(size: 16pt)[#titolo]
 
     #let count = autori.len()
     #let colonne = calc.min(count, 3)
@@ -80,7 +76,7 @@
       columns: (1fr,) * colonne,
       row-gutter: 24pt,
 
-      ..autori.map(autore => [#autore.nome \ #link("mailto:" + autore.email) \ #autore.matricola])
+      ..autori.map(autore => [#autore.nome #footnote[#link("mailto:" + autore.email), numero di matricola #autore.matricola]])
     )
 
     #par(justify: false)[
