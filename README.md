@@ -1,6 +1,8 @@
-# Stima della distanza focale di una lente (non troppo) spessa e studio delle aberrazioni
+# Verifica della legge delle lenti sottili e studio delle aberrazioni ottiche
 
 Ovvero, la prima esperienza di laboratorio per il corso "Sperimentazioni di fisica 2" del corso di laurea in Fisica dell'Università degli Studi di Padova.
+
+La lunghezza focale di una prima lente convergente è stata determinata utilizzando il metodo dei punti coniugati e il metodo di Bessel. Le aberrazioni cromatica e sferica di una seconda lente sono state analizzate rispettivamente osservando la variazione del punto focale con la lunghezza d'onda e misurando la diversa focalizzazione dei raggi marginali rispetto a quelli parassiali. In questa seconda fase è stato utilizzato un doppietto ottico di lunghezza focale nota per generare un fascio di luce collimata, in quanto la prima lente si è dimostrata non adatta allo scopo.
 
 ## Che cosa c'è qui
 

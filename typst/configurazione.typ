@@ -47,8 +47,7 @@
   
   set par(
     first-line-indent: 1em,
-    spacing: 0.65em,
-    justify: true,
+    justify: true
   )
 
   set page(
@@ -65,7 +64,7 @@
 
   // show title: set text(size: 17pt)
 
-  place(top + center, float: true, scope: "parent", clearance: 3em)[
+  place(top + center, float: true, scope: "parent", clearance: 4em)[
     
     #text(size: 16pt)[#titolo]
 

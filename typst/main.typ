@@ -1,6 +1,9 @@
+#import "@preview/unify:0.7.1": num, qty, numrange, qtyrange
+#import "@preview/drafting:0.2.2": *
+
 #set document(title: [Verifica della legge delle lenti sottili e studio delle aberrazioni ottiche])
 
-#let abstract = [La lunghezza focale di una prima lente convergente è stata determinata utilizzando il metodo dei punti coniugati e il metodo di Bessel. Le aberrazioni cromatica e sferica di una seconda lente sono state analizzate rispettivamente osservando la variazione del punto focale con la lunghezza d'onda e misurando la diversa focalizzazione dei raggi marginali rispetto a quelli parassiali. In questa seconda fase è stato utilizzato un doppietto di Dullond di lunghezza focale nota per generare un fascio di luce collimata, in quanto la prima lente si è dimostrata non adatta allo scopo.]
+#let abstract = [La lunghezza focale di una prima lente convergente è stata determinata utilizzando il metodo dei punti coniugati e il metodo di Bessel. Le aberrazioni cromatica e sferica di una seconda lente sono state analizzate rispettivamente osservando la variazione del punto focale con la lunghezza d'onda e misurando la diversa focalizzazione dei raggi marginali rispetto a quelli parassiali. In questa seconda fase è stato utilizzato un doppietto ottico di lunghezza focale nota per generare un fascio di luce collimata, in quanto la prima lente si è dimostrata non adatta allo scopo.]
 
 #import "configurazione.typ": configurazione
 
@@ -28,28 +31,31 @@
   */
 })
 
-= Cose da fare per quanto riguarda la relazione
-  - Descrizione dell'apparato e del processo di misura
-    - Scriviamo giù tutti gli oggetti che avevamo (famo 'na specie di lista)
-    - Poi io farei sottosezioni tipo "Stima con punti coniugati", "Stima con Bessel", ecc. Dentro ognuna di queste la descrizione turbo-autism di come abbiamo fatto a prendere le misure CAD compresi (chi li fa)?
-  
-  - Descrizione del processo di analisi dati e conclusioni
-    - Qui magari scriviamo come abbiamo apportato le correzioni (riferendoci ai disegni fatti col CAD di cui sopra), e spieghiamo come abbiamo determinato le incertezze (che io nn ho ancora capito come cabbo si fa). Non so.
+= Che cosa manca da fare
+
+#inline-note(fill: orange.lighten(80%))[
+  - (Opzionale) Forse migliorare un po' la descrizione descrizione delle correzioni e aggiungere valori numerici.
+  - Terminare la descrizione della procedura di misura metodo punti coniugati.
+    - Manca da spiegare la faccenda delle cinque foto per determinare l'incertezza su $p_"prelim"$.
+    - Commentare grafico in @pprelim-focale.
+  - Scrivere metodo di Bessel.
+  - Scrivere come sono stati analizzati i dati.
+]
 
 = Introduzione <introduzione>
 L'equazione fondamentale delle lenti sottili
 
 $
-  1 / p + 1 / q = f
+  1 / p + 1 / q = 1 / f
 $ <fina>
 
 dove $p$ è la distanza oggetto-lente, $q$ è la distanza lente-immagine nitida e $f$ è la lunghezza focale della lente in esame, si deriva nell'approssimazione parassiale (per raggi poco inclinati rispetto all'asse ottico) e descrive il comportamento ideale di una lente priva di aberrazioni.
 
-== Prima parte: stima della lunghezza focale di una lente e verifica dell'@fina
+== Parte prima: verifica dell'@fina e determinazione della lunghezza focale di una lente <intro-focale>
 
- Nella prima parte dell'esperienza la validità dell'@fina è stata verificata e sfruttata per determinare la lunghezza focale di una lente convergente (in seguito "lente numero 1", "prima lente", ecc.). La procedura di misura seguita è riassunta nel "metodo dei punti coniugati" e nel "metodo di Bessel", ora descritti brevemente. I dettagli sul setup sperimentale e sulla procedura di misura e di analisi dei dai sono riportati nella @setup.
+ Nella prima parte dell'esperienza la validità dell'@fina è stata verificata e sfruttata per determinare la lunghezza focale di una lente convergente (in seguito "lente numero 1", "prima lente", ecc.). La procedura di misura seguita è riassunta nel "metodo dei punti coniugati" e nel "metodo di Bessel", ora descritti brevemente. I dettagli sul setup sperimentale adottato e sulla procedura di misura sono riportati nella @setup.
 
-*Il metodo dei punti coniugati*. Su una breadboard ottica sono stati allestiti un oggetto (costituito da una sorgente luminosa a piè della quale è stata posta una una maschera opaca forata) e una guida metrica lineare. La lente in esame e una camera CCD sono state disposte a posizione variabile sulla guida metrica in modo da determinare il maggior numero di coppie $(p,q)$ di "punti coniugati" per i quali l'immagine dell'oggetto prodotta dalla lente risultasse a fuoco sulla camera. La lunghezza focale $f$ della prima lente è stata quindi calcolata mediante un fit lineare sulle coppie $(1/p,1/q)$, la cui relazione funzionale è descritta appunto dall'@fina.
+*Il metodo dei punti coniugati*. Su una breadboard ottica sono stati allestiti un oggetto (costituito da una sorgente luminosa a piè della quale è stata posta una una maschera opaca forata) e una guida metrica lineare. La lente in esame e una camera CCD sono state disposte a posizione variabile sulla guida metrica in modo da determinare il maggior numero di coppie $(p,q)$ di "punti coniugati" per i quali l'immagine dell'oggetto prodotta dalla lente risultasse a fuoco sulla camera. La lunghezza focale $f$ della prima lente è stata calcolata mediante un fit lineare sulle coppie $(1/p,1/q)$, la cui relazione funzionale è descritta appunto dall'@fina.
 
 *Il metodo di Bessel*. Sulla breadboard ottica equipaggiata come nel punto precedente la camera è stata fissata a una distanza $d>4f$ (dove $f$ è la distanza focale stimata con il metodo precedente) dall'oggetto. In tali condizioni si ricava che esistono due punti distinti tra oggetto e camera nei quali l'immagine è a fuoco. Se $Delta$ è la distanza tra tra queste due posizioni la lunghezza focale si calcola con la relazione
 $
@@ -57,15 +63,107 @@ $
 $
 pertanto è possibile fornire una stima precisa di $f$ ripetendo la procedura di misura della distanza $Delta$ per diverse posizioni della camera.
 
-La determinazione diretta dei valori $p$ e $q$ nel metodo dei punti coniugati è soggetta dalla difficoltà pratica di individuare con precisione i piani principali della lente, ovvero i punti di riferimento teorici dai quali si misurano le distanze oggetto-lente e lente-camera. È stato assunto che ciascun piano principale fosse collocato a circa un terzo dello spessore $V V'$ della lente all'interno del vetro, ovvero a una distanza $(V V')/3$ dal vertice corrispondente. Tuttavia, questa rimane una stima approssimata la cui incertezza contribuisce direttamente all'incertezza sistematica nella determinazione diretta di $p$ e $q$ per il metodo dei punti coniugati. Il metodo di Bessel è esente da questo tipo di errore sistematico.
+La determinazione diretta dei valori $p$ e $q$ nel metodo dei punti coniugati è soggetta alla difficoltà pratica di individuare con precisione i piani principali della lente, ovvero i punti di riferimento teorici dai quali si misurano le distanze oggetto-lente e lente-camera #footnote[È stato assunto che ciascun piano principale fosse collocato a circa un terzo dello spessore $V V'$ della lente all'interno del vetro, ovvero a una distanza $(V V')/3$ dal vertice corrispondente. Tuttavia, questa rimane una stima approssimata la cui incertezza contribuisce direttamente all'incertezza sistematica nella determinazione diretta di $p$ e $q$ per il metodo dei punti coniugati.]. Inoltre, gli elementi ottici hanno dimensioni fisiche non trascurabili delle quali è opportuno tenere conto, non senza introdurre però un'ulteriore fonte di errore casuale ed eventualmente sistematico nelle misure. Il metodo di Bessel è esente da questo primo tipo di errore sistematico, mentre partecipa degli altri. Nella @setup sono state discusse le correzioni da apportare alle misure per ovviare alla presenza di questi errori.
 
 == Seconda parte: studio delle aberrazioni ottiche
 
-Per lo studio qualitativo delle aberrazioni il banco ottico è stato riconfigurato per ottenere un fascio di luce parallelo incidente sulla lente in esame (in seguito "lente numero 2", "seconda lente", ecc.). Questo è stato realizzato posizionando la sorgente luminosa nel fuoco anteriore di un doppietto ottico, che ha funto in tal modo da collimatore dei raggi luminosi.
+In questa seconda parte si è affrontato lo studio delle deviazioni dal modello di lente sottile ideale riportato in @fina.
 
-Successivamente,
-1. È stata registrata la variazione del punto focale della seconda lente in funzione della lunghezza d'onda della luce emessa dalla sorgente al fine di valutare quantitativamente l'aberrazione cromatica longitudinale.
+Il banco ottico è stato riorganizzato in modo da avere a disposizione una sorgente di luce collimata (raggi paralleli). Successivamente,
 
-2. Diocane
+  1. è stata registrata la variazione del punto focale della seconda lente in funzione della lunghezza d'onda della luce emessa dalla sorgente al fine di valutare quantitativamente l'aberrazione cromatica longitudinale (per tre lunghezze d'onda: blu, giallo e rosso);
+
+  2. è stato registrato l'offset che separa il punto di focalizzazione dei raggi parassiali da quello dei raggi marginali al fine di valutare l'aberrazione sferica.
+
+Per i dettagli sul setup sperimentale adottato e sulla procedura di misura si rimanda sempre alla @setup.
+
+#inline-note(fill: orange.lighten(80%))[
+Aggiungere parte dove si spiega come sono state analizzate le immagini.
+]
 
 = L'apparato sperimentale e la metodologia di misura <setup>
+
+L'incertezza statistica associata alle misure di distanza presentate in questa sezione è pari a $#qty(0.1, "mm")$. Un'analisi più approfondita dell'incertezza di misura sarà discussa alla @analisi.
+
+== Componenti
+Per svolgere entrambe le parti dell'esperienza sono stati utilizzati
+  - Breadboard ottica Thorlabs MB4590/M, paletti Thorlabs serie TR, portapaletti Thorlabs serie PH e adeguata viteria.
+  - Sorgente luminosa equipaggiata con una maschera opaca forata che permette la propagazione dei raggi di luce esclusivamente nella direzione dell'asse ottico (l'"oggetto") e schermabile attraverso filtri a $lambda_"F" = #qty("486.1", "nm")$, $lambda_"D" = #qty("589.7", "nm")$ e $lambda_"C" = #qty("656.3", "nm")$.
+  - Alimentatore da banco e cavi (per alimentare la sorgente luminosa).
+  - Guida metrica Thorlabs RLA240 e carrelli Thorlabs RC1.
+  - Schermo Thorlabs EDU-VS2M (utile per le procedure di allineamento).
+  - Bastoncino di plastica di $#qty(81, "mm")$ di lunghezza.
+  - Portalenti Thorlabs LMR2S/M.
+  - Lente di lunghezza focale incognita in vetro N-BK7#footnote[Quest'informazione andrebbe verificata.] di produttore Thorlabs (cotrassegnata da un bollino verde).
+  - Doppietto ottico (presumibilmente di produttore Thorlabs) di lunghezza focale nota $f = #qty(81, "mm")$.
+  - Camera CCD Thorlabs CS165CU/M con cavetto USB.
+  - Un PC con software ThorImageCAM per controllare la camera.
+
+== Allestimento del banco ottico e determinazione dei fattori di correzione <allestimento-correzioni>
+
+I componenti principali (camera, lente, ecc.) sono stati montati sulle rispettive strutture di supporto Thorlabs serie TR e PH, ad ognuna delle quali è stato avvitato uno carrello Thorlabs RC1. La sorgente luminosa equipaggiata con maschera e filtri è stata collegata all'alimentatore e assieme alla guida metrica è invece fissata direttamente alla breadboard ottica.
+
+=== Offset oggetto-zero della guida metrica
+
+L'offset $delta_1$ tra il foro della maschera (l'"oggetto") e lo zero della guida è stato determinato mediante la seguente procedura (cfr. @repo). Lo schermo Thorlabs EDU-VS2M (in seguito "lo schermo") è stato posto perpendicolarmente alla direzione di propagazione dei raggi luminosi a una distanza pari alla lunghezza $l_"bacchetta" = #qty(81, "mm")$ della bacchetta dall'oggetto. Il valore segnato dal lato sinistro del rispettivo carrello sulla guida metrica è stato registrato come $z$. Il valore di $delta_1$ è stato pertanto determinato come
+$
+  delta_1 = l_"bacchetta" + 1/2 l_"schermo" - 1/2 l_"carrello" - z
+$
+dove $l_"schermo" = #qty(3, "mm")$ e $l_"carrello" = #qty(25.4, "mm")$ sono rispettivamente la misura dello spessore dello schermo e della lunghezza del lato lungo del carrello riportate nei disegni fatti mediante CAD e resi disponibili sulla pagina Moodle del corso o direttamente sul sito del produttore.
+
+=== Offset carrello-lente
+Gli offset $delta_2$ e $delta_3$ rispettivamente tra i lati sinistro e destro del carrello sul quale è alloggiata la prima lente e i suoi vertici sinistro e destro sono stati determinati mediante la seguente procedura (cfr. sempre i disegni alla @repo). Per determinare $delta_2$ schermo e lente sono stati disposti in quest'ordine sulla guida metrica, con lo schermo a distanza $l_"bacchetta"$ dal vertice sinistro della lente. È stata segnata la distanza $Delta$ tra il lato destro del carrello portante lo schermo e il lato sinistro del carrello portante la lente. Successivamente si è posto
+$
+  delta_2 = 1/2 l_"schermo" + l_"bacchetta" -1/2 l_"carrello" - Delta
+$
+dove come prima $l_"schermo"$ e $l_"carrello"$ sono rispettivamente la misura dello spessore dello schermo e della lunghezza del lato lungo del carrello riportate nei disegni. In modo analogo è stato determinato $delta_3$, ponendo questa volta lo schermo a destra della lente.
+
+=== Offset carrello-piano principale
+Gli offset $delta_4$ e $delta_5$ tra rispettivamente il lato sinistro del carrello nel quale è alloggiata la lente e il suo primo piano principale, e tra il suo secondo piano principale e il lato destro del carrello sono stati determinati a partire dagli offset $delta_2$ e $delta_3$ carrello-lente nel modo seguente. Come preannunciato, è stato assunto che ciascun piano principale fosse collocato a circa un terzo dello spessore $V V'$ della lente all'interno del vetro. Pertanto abbiamo posto
+$
+  delta_4 = delta_2 + 1/2 V V' - 1/2 (V V')/3
+$
+dove il valore della quantità $V V'$ è tabulato pari a $V V' = #qty(11.8, "mm")$. In modo analogo è stato determinato $delta_5$.
+
+=== Offset carrello-sensore CCD
+L'offset $delta_6$ tra il lato sinistro del carrello sul quale è alloggiata la camera e l'effettiva posizione del sensore CCD all'interno di essa è stato determinato a partire dai disegni tecnici forniti dal produttore come
+$
+  delta_6 = 1/2 l_"carrello" + #qty(3, "mm")
+$
+dove come sempre $l_"carrello"$ denota la lunghezza del lato maggiore del carrello.
+
+== Verifica della legge delle lenti sottili e determinazione della lunghezza focale della prima lente
+
+Come accennato nell'Introduzione sono stati impiegati due metodi distinti per determinare la lunghezza focale della prima lente. Entrambi i metodi richiedono di essere svolti in un ambiente buio. Gli elementi ottici sono stati maneggiati indossando dei guanti in lattice.
+
+=== Metodo dei punti coniugati
+
+Una volta che la breadboard ottica è stata allestita come indicato sopra alla @allestimento-correzioni, la camera è stata collegata al PC per visualizzare in tempo reale il suo output sul monitor, e la sorgente luminosa è stata alimentata con una tensione variabile da $#qty(0.0, "V")$ a $#qty(10.0, "V")$. Per svolgere la misura è stato utilizzato il filtro blu a lunghezza $lambda_"F" = #qty(486.1, "nm")$. La procedura delineata alla voce "Metodo dei punti coniugati" della @intro-focale è stata implementata nel modo seguente.
+
+La lente è stata posizionata ripetutamente sulla guida metrica in modo che il lato sinistro del suo carrello di supporto corrispondesse a una serie di valori preliminari $p_"prelim"$ di distanza oggetto-lente da $#qty(60, "mm")$ a $#qty(490, "mm")$, con un passo di $#qty(5, "mm")$ o $#qty(10, "mm")$. Per ciascuna di queste posizioni è stata regolata la posizione della fotocamera lungo la guida, spostandola avanti e indietro finché l'immagine mostrata sullo schermo del PC è risultata sufficientemente nitida. Il valore segnato dal lato sinistro del relativo carrello è stato registrato come distanza preliminare $q_"prelim"$ lente-camera.
+
+A ciascuna delle coppie $(p_"prelim", q_"prelim")$ sono state apportate le correzioni descritte in @allestimento-correzioni. L'andamento generale di queste nuove coppie $(p,q)$ è visualizzabile e delle coppie $(1/p, 1/q)$ è riportato in @pq e in @XY. Il file `.csv` con le misure è disponibile nella repository associata alla relazione, vd. @repo.
+
+#grid(
+  columns: (1fr,1fr),
+  row-gutter: 24pt,
+  [#figure(image("pq.png", width: 110%), caption: [Andamento delle coppie $(p,q)$]) <pq>],
+  [#figure(image("XY.png", width: 110%), caption: [Andamento delle coppie $(1/p,1/q)$]) <XY>]
+)
+
+L'@fina permette di fornire una prima stima grezza della lunghezza focale della lente in esame come
+$
+  f = (1/p + p/q)^(-1) "."
+$
+L'andamento di questo valore in funzione delle distanze preliminari $p_"prelim"$ oggetto-lente è riportato in @pprelim-focale.
+
+#figure(
+  image("pprelim_focale.png", width:70%), caption: [Andamento di $f$ in funzione delle distanze preliminari oggetto-lente]
+) <pprelim-focale>
+
+
+= Analisi dei dati <analisi>
+
+= Dati, codice e disegni tecnici <repo>
+
+Il materiale di supporto alla relazione è archiviato in una repository al link #link("https://www.github.com/marcovianello5/es1_focale"). 
